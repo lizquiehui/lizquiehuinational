@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Constitution of the United States - Cosmic Edition</title>
+    <style>
+        :root {
+            --bg-color: #030308;
+            --text-color: #f0f4f8;
+            --accent-gold: #ffd700;
+            --buddha-blue: rgba(0, 0, 255, 0.4);
+            --buddha-yellow: rgba(255, 255, 0, 0.4);
+            --buddha-red: rgba(255, 0, 0, 0.4);
+            --buddha-white: rgba(255, 255, 255, 0.5);
+            --buddha-orange: rgba(255, 165, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Cinzel', 'Georgia', serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Universe & Stars Canvas */
+        #space-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Five-Colored Buddha Light Container */
+        #buddha-light-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .buddha-flash {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150vmax;
+            height: 150vmax;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(255,255,255,0.8) 0%, 
+                var(--buddha-white) 10%,
+                var(--buddha-blue) 25%, 
+                var(--buddha-yellow) 40%, 
+                var(--buddha-red) 55%, 
+                var(--buddha-orange) 70%,
+                transparent 85%
+            );
+            opacity: 0;
+            mix-blend-mode: screen;
+            animation: cosmicFlash 14s infinite ease-in-out;
+        }
+
+        @keyframes cosmicFlash {
+            0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); filter: blur(20px); }
+            45% { opacity: 0; }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); filter: blur(5px); }
+            55% { opacity: 0; transform: translate(-50%, -50%) scale(1.3); filter: blur(30px); }
+        }
+
+        /* Content Aura Wrapper */
+        .wrapper {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(8, 8, 16, 0.65);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.05);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #a0aec0;
+            font-size: 1.1rem;
+        }
+
+        .preamble {
+            font-size: 1.25rem;
+            font-style: italic;
+            text-align: center;
+            color: #e2e8f0;
+            padding: 25px;
+            background: rgba(255, 215, 0, 0.03);
+            border-left: 3px solid var(--accent-gold);
+            border-right: 3px solid var(--accent-gold);
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .article {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .article:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(255, 215, 0, 0.3), transparent);
+            margin-left: 15px;
+        }
+
+        p {
+            color: #cbd5e1;
+            text-align: justify;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            font-size: 0.85rem;
+            color: #718096;
+            letter-spacing: 1px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Georgia&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <canvas id="space-canvas"></canvas>
+    <div id="buddha-light-container">
+        <div class="buddha-flash"></div>
+    </div>
+
+    <div class="wrapper">
+        <header>
+            <h1>The Constitution</h1>
+            <div class="subtitle">of the United States of America</div>
+        </header>
+
+        <section class="preamble">
+            "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America."
+        </section>
+
+        <main>
+            <div class="article">
+                <h2>Article I — The Legislative Branch</h2>
+                <p>All legislative Powers herein granted shall be vested in a Congress of the United States, which shall consist of a Senate and House of Representatives.</p>
+            </div>
+
+            <div class="article">
+                <h2>Article II — The Executive Branch</h2>
+                <p>The executive Power shall be vested in a President of the United States of America. He shall hold his Office during the Term of four Years, and, together with the Vice President, chosen for the same Term, be elected, as follows...</p>
+            </div>
+
+            <div class="article">
+                <h2>Article III — The Judicial Branch</h2>
+                <p>The judicial Power of the United States, shall be vested in one supreme Court, and in such inferior Courts as the Congress may from time to time ordain and establish.</p>
+            </div>
+
+            <div class="article">
+                <h2>Article IV — States' Relations</h2>
+                <p>Full Faith and Credit shall be given in each State to the public Acts, Records, and judicial Proceedings of every other State. And the Congress may by general Laws prescribe the Manner in which such Acts, Records and Proceedings shall be proved, and the Effect thereof.</p>
+            </div>
+
+            <div class="article">
+                <h2>Article V — Mode of Amendment</h2>
+                <p>The Congress, whenever two thirds of both Houses shall deem it necessary, shall propose Amendments to this Constitution...</p>
+            </div>
+
+            <div class="article">
+                <h2>Article VI — National Supremacy</h2>
+                <p>All Debts contracted and Engagements entered into, before the Adoption of this Constitution, shall be as valid against the United States under this Constitution, as under the Confederation.</p>
+            </div>
+
+            <div class="article">
+                <h2>Article VII — Ratification</h2>
+                <p>The Ratification of the Conventions of nine States, shall be sufficient for the Establishment of this Constitution between the States so ratifying the Same.</p>
+            </div>
+        </main>
+
+        <footer>
+            Cosmic Edition • Crafted for Github Showcase
+        </footer>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('space-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class Star {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * height; // initial random distribution
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = 0;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speed = Math.random() * 0.4 + 0.1;
+                this.alpha = Math.random() * 0.5 + 0.5;
+                this.glow = Math.random() > 0.8;
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                if (this.glow) {
+                    ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha * 0.3})`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        const stars = Array.from({ length: 150 }, () => new Star());
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Subtle cosmic dust background glow
+            ctx.fillStyle = 'rgba(5, 5, 15, 0.3)';
+            ctx.fillRect(0, 0, width, height);
+
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
